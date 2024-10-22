@@ -1,0 +1,8 @@
+{
+  "name": "tcp-multi-player",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/HolySSA/tcp-multi-player.git",
+  "author": "SSA <158470963+shinseongan@users.noreply.github.com>",
+  "license": "MIT"
+}
