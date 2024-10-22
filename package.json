@@ -1,7 +1,10 @@
 {
   "name": "tcp-multi-player",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js"
+  },
   "repository": "https://github.com/HolySSA/tcp-multi-player.git",
   "author": "SSA <158470963+shinseongan@users.noreply.github.com>",
   "license": "MIT",
@@ -9,5 +12,11 @@
   "devDependencies": {
     "nodemon": "^3.1.7",
     "prettier": "^3.3.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "lodash": "^4.17.21",
+    "protobufjs": "^7.4.0",
+    "uuid": "^10.0.0"
   }
 }
