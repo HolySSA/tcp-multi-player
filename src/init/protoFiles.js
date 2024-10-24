@@ -4,7 +4,7 @@ import path from 'path';
 /**
  * 주어진 디렉토리 내 모든 proto 파일을 재귀적으로 찾는 함수
  * @param {*} dir
- * @param {*} fileList
+ * @param {*} fileList - 빈 배열
  * @returns
  */
 export const getAllProtoFiles = (dir, fileList = []) => {
@@ -12,6 +12,7 @@ export const getAllProtoFiles = (dir, fileList = []) => {
 
   files.forEach((file) => {
     const filePath = path.join(dir, file);
+
     if (fs.statSync(filePath).isDirectory()) {
       getAllProtoFiles(filePath, fileList);
     } else if (path.extname(file) === '.proto') {
