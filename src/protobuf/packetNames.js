@@ -6,7 +6,13 @@ export const packetNames = {
     Packet: 'common.Packet',
     Ping: 'common.Ping',
   },
+  game: {
+    LocationUpdatePayload: 'game.LocationUpdatePayload',
+  },
   response: {
     Response: 'response.Response',
+  },
+  notification: {
+    LocationUpdate: 'notification.LocationUpdate',
   },
 };
