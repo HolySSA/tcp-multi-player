@@ -1,6 +1,6 @@
 export const packetNames = {
   initial: {
-    InitialPacket: 'initial.InitialPacket',
+    InitialPayload: 'initial.InitialPayload',
   },
   common: {
     Packet: 'common.Packet',

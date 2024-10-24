@@ -6,7 +6,7 @@ import { ErrorCodes } from '../utils/error/errorCodes.js';
 const handlers = {
   [HANDLER_IDS.INITIAL]: {
     handler: initialHandler,
-    protoType: 'initial.InitialPacket',
+    protoType: 'initial.InitialPayload',
   },
 };
 

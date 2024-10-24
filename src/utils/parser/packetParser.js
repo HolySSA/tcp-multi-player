@@ -7,11 +7,11 @@ import { ErrorCodes } from '../error/errorCodes.js';
 export const packetParser = (data) => {
   const protoMessages = getProtoMessages();
 
-  // 공통 패킷 구조를 디코딩
-  const Packet = protoMessages.common.Packet;
+  // common 패킷 구조를 디코딩
+  const commonPacket = protoMessages.common.Packet;
   let packet;
   try {
-    packet = Packet.decode(data);
+    packet = commonPacket.decode(data);
   } catch (err) {
     throw new CustomError(ErrorCodes.PACKET_DECODE_ERROR, '패킷 디코딩 중 오류가 발생했습니다.');
   }
@@ -40,7 +40,7 @@ export const packetParser = (data) => {
   let payload;
   try {
     payload = PayloadType.decode(packet.payload);
-  } catch (error) {
+  } catch (err) {
     throw new CustomError(ErrorCodes.PACKET_STRUCTURE_MISMATCH, '패킷 구조가 일치하지 않습니다.');
   }
 

@@ -10,5 +10,5 @@ export const onConnection = (socket) => {
 
   socket.on('data', onData(socket));
   socket.on('end', onEnd(socket));
-  //socket.on('error', onError(socket));
+  socket.on('error', onError(socket));
 };
