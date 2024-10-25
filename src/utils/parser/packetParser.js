@@ -35,11 +35,11 @@ export const packetParser = (data) => {
   }
 
   const [namespace, typeName] = protoTypeName.split('.');
-  const PayloadType = protoMessages[namespace][typeName];
+  const payloadType = protoMessages[namespace][typeName];
 
   let payload;
   try {
-    payload = PayloadType.decode(packet.payload);
+    payload = payloadType.decode(packet.payload);
   } catch (err) {
     throw new CustomError(ErrorCodes.PACKET_STRUCTURE_MISMATCH, '패킷 구조가 일치하지 않습니다.');
   }
@@ -51,7 +51,7 @@ export const packetParser = (data) => {
   }
 
   // 필드가 비어 있거나, 필수 필드가 누락된 경우 처리
-  const expectedFields = Object.keys(PayloadType.fields);
+  const expectedFields = Object.keys(payloadType.fields);
   const actualFields = Object.keys(payload);
   const missingFields = expectedFields.filter((field) => !actualFields.includes(field));
   if (missingFields.length > 0) {
