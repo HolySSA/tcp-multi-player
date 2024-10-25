@@ -7,8 +7,8 @@ import { userSessions } from './sessions.js';
  * @param {*} uuid
  * @returns
  */
-export const addUser = (socket, uuid) => {
-  const user = new User(socket, uuid);
+export const addUser = (socket, uuid, playerId, latency) => {
+  const user = new User(socket, uuid, playerId, latency);
   userSessions.push(user);
 
   return user;
@@ -34,4 +34,8 @@ export const removeUser = (socket) => {
  */
 export const getUserById = (id) => {
   return userSessions.find((user) => user.id === id);
+};
+
+export const getAllUsers = () => {
+  return userSessions;
 };
