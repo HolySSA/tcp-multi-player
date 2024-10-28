@@ -1,3 +1,5 @@
+import { createLocationPacket } from '../../utils/notification/game.notification.js';
+
 class Game {
   constructor(id) {
     this.id = id;
@@ -21,7 +23,16 @@ class Game {
     }
   }
 
-  getAllLocation() {}
+  getAllLocation(userId) {
+    const locationData = this.users
+      .filter((user) => user.id !== userId) // 자신을 제외한 유저들
+      .map((user) => {
+        // 정보(위치) 반환
+        return { id: user.id, playerId: user.playerId, x: user.x, y: user.y };
+      });
+
+    return createLocationPacket(locationData);
+  }
 }
 
 export default Game;
