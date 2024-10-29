@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "migrate": "node src/db/migrations/createSchema.js"
   },
   "repository": "https://github.com/HolySSA/tcp-multi-player.git",
   "author": "SSA <158470963+shinseongan@users.noreply.github.com>",

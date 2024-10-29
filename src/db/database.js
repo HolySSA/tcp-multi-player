@@ -5,16 +5,12 @@ import { formatDate } from '../utils/dateFormatter.js';
 const { databases } = config;
 
 // 데이터베이스 커넥션 풀 생성 함수
-const createPool = (dbConfig) => {
+const createPool = () => {
   const pool = mysql.createPool({
-    host: dbConfig.host,
-    port: dbConfig.port,
-    user: dbConfig.user,
-    password: dbConfig.password,
-    database: dbConfig.name,
+    ...config.databases.USER_DB,
     waitForConnections: true,
-    connectionLimit: 10, // 커넥션 풀에서 최대 연결 수
-    queueLimit: 0, // 0일 경우 무제한 대기열
+    connectionLimit: 10,
+    queueLimit: 0,
   });
 
   const originalQuery = pool.query;
@@ -34,10 +30,6 @@ const createPool = (dbConfig) => {
   return pool;
 };
 
-// 여러 데이터베이스 커넥션 풀 생성
-const pools = {
-  GAME_DB: createPool(databases.GAME_DB),
-  USER_DB: createPool(databases.USER_DB),
-};
+const dbPool = createPool();
 
-export default pools;
+export default dbPool;

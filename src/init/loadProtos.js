@@ -35,8 +35,8 @@ export const loadProtos = async () => {
     }
 
     console.log('Protobuf 파일이 로드되었습니다.');
-  } catch (error) {
-    console.error('Protobuf 파일 로드 중 오류가 발생했습니다:', error);
+  } catch (err) {
+    console.error('Protobuf 파일 로드 중 오류가 발생했습니다:', err);
   }
 };
 
