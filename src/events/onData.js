@@ -3,6 +3,8 @@ import { packetParser } from '../utils/parser/packetParser.js';
 import { PACKET_TYPE } from '../constants/header.js';
 import { getHandlerById } from '../handlers/index.js';
 import { handleError } from '../utils/error/errorHandler.js';
+import { getProtoMessages } from '../init/loadProtos.js';
+import { getUserBySocket } from '../session/user.session.js';
 
 export const onData = (socket) => async (data) => {
   socket.buffer = Buffer.concat([socket.buffer, data]);
@@ -27,6 +29,12 @@ export const onData = (socket) => async (data) => {
         switch (packetType) {
           case PACKET_TYPE.PING:
             {
+              const protoMessages = getProtoMessages();
+              const Ping = protoMessages.common.Ping;
+              const pingPacket = Ping.decode(packet);
+
+              const user = getUserBySocket(socket);
+              user.handlePong(pingPacket);
             }
             break;
           case PACKET_TYPE.NORMAL:

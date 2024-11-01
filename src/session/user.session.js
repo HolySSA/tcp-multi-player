@@ -39,6 +39,22 @@ export const getUserById = (id) => {
   return userSessions.find((user) => user.id === id);
 };
 
+/**
+ * socket으로 유저 불러오기
+ * @param {*} socket
+ * @returns
+ */
+export const getUserBySocket = (socket) => {
+  const user = userSessions.find((user) => user.socket === socket);
+
+  if (!user) {
+    console.error('User not found: getUserBySocket');
+    return;
+  }
+
+  return user;
+};
+
 export const getAllUsers = () => {
   return userSessions;
 };
