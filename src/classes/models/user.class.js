@@ -35,7 +35,7 @@ class User {
     const now = Date.now();
     this.latency = (now - data.timestamp) / 2;
 
-    console.log(`${this.id}: ${this.latency}ms`);
+    // console.log(`${this.id}: ${this.latency}ms`);
   }
 
   calculatePosition(latency) {
